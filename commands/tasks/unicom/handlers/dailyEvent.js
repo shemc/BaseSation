@@ -1,7 +1,9 @@
 const useragent = require("./myPhone").useragent;
 let AES = require("./PAES");
 /**
- * @param {String} url request url absolute path
+ *
+ * @param {*} url request url absolute path
+ * @param {*} cnf = {base 平台类别[msmds,]如果是自身平台无需参数绑定
  */
 let getOpenPlatLine = (url, cnf = { base: "" }) => {
   return async (axios, options) => {
@@ -162,6 +164,12 @@ let lookVideoDoubleResult = (title) => {
     }
   };
 };
+/**
+ *
+ * @param {json} params1 https://m.client.10010.com/taskcallback/taskfilter/query
+ * @param {*} params2 https://m.client.10010.com/taskcallback/taskfilter/dotasks
+ * @param {*} title
+ */
 let lookVideoDouble = (params1, params2, title) => {
   console.log(`😒 ${title}游玩开始翻倍`);
   return async (axios, options) => {
