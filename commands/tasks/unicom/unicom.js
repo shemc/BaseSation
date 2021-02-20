@@ -11,7 +11,9 @@
  *  首页-小说-阅读越有礼打卡赢话费
  *  首页-小说-读满10章赢好礼
  *  首页-小说-阅读福利抽大奖
+ *  首页-小说-任意一本小说内页章节中间 [看书里面的5个视频]
  *  首页-签到有礼-免费领-浏览领积分
+ *  首页-签到有礼-免费领-猜拳拿话费
  *  首页-签到有礼-免费拿-看视频夺宝
  *  首页-签到有礼-免费抽-抓OPPO手机
  *  首页-签到有礼-免费抽-拿666积分-豪礼大派送抽奖
@@ -351,7 +353,7 @@ var start = async (params) => {
   // await require('./integral').getTxDetail(request, options)
   // await require('./integral').getDxDetail(request, options)
   // await require('./integral').getCoins(request, options)
-
+  /***
   // 首页-牛气-秒杀抢兑
   await scheduler.regTask(
     "NiujieSpikePrize",
@@ -387,7 +389,7 @@ var start = async (params) => {
       ...taskOption,
     }
   );
-
+***/
   //首页-签到有礼-聚宝盆 [广告图]
   await scheduler.regTask(
     "ingots",
@@ -419,6 +421,52 @@ var start = async (params) => {
     "dailyBaWangcard",
     async (request) => {
       await require("./dailyBaWangcard.js").doTask(request, options);
+    },
+    taskOption
+  );
+
+  //首页-小说-任意一本小说内页章节中间 [看书里面的5个视频]
+  await scheduler.regTask(
+    "book5video",
+    async (request) => {
+      await require("./book5video.js").doTask(request, options);
+    },
+    taskOption
+  );
+
+  // 首页-签到有礼-免费领-猜拳拿话费
+  await scheduler.regTask(
+    "dailyFingerqd",
+    async (request) => {
+      await require("./dailyFingerqd.js").doTask(request, options);
+    },
+    taskOption
+  );
+
+  // 积分商城-积分猜拳-猜拳二号
+  await scheduler.regTask(
+    "dailyFingerqd2",
+    async (request) => {
+      await require("./dailyFingerqd2.js").doTask(request, options);
+    },
+    taskOption
+  );
+
+  //套餐看视频得积分
+  //活动入口：主页-套餐页面-2个视频
+  await scheduler.regTask(
+    "taocan",
+    async (request) => {
+      await require("./taocan.js").doTask(request, options);
+    },
+    taskOption
+  );
+
+  // 首页-签到有礼-饿了么红包
+  await scheduler.regTask(
+    "dailyTurncards",
+    async (request) => {
+      await require("./dailyTurncards.js").doTask(request, options);
     },
     taskOption
   );
